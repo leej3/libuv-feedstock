@@ -30,7 +30,7 @@ build:
     
     - dpkg-reconfigure --frontend=noninteractive locales
 
-    - curl -L -O https://github.com/Archiconda/build-tools/releases/download/0.2.2/Archiconda3-0.2.2-Linux-aarch64.sh
+    - curl -L -O https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh
     - bash Archiconda3*.sh -b -p /root/archiconda3
     - export PATH="/root/archiconda3/bin:${PATH}"
     - source /root/archiconda3/bin/activate root
