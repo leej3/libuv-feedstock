@@ -21,7 +21,8 @@ build:
     # image_tag: 18.04
     # Same as conda-forge image, but with git and sudo installed
     image_name: archiconda/linux-anvil-aarch64
-    image_tag: 'latest'
+    # image_tag: 'latest'
+    image_tag: 'builder'
     pull: True
 
   ci:
