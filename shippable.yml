@@ -8,7 +8,7 @@ env:
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
   matrix:
-    - CONFIG=linux_
+    - CONFIG=linux_aarch64_
       UPLOAD=False
 
 build:
