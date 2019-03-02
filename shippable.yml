@@ -22,7 +22,7 @@ build:
     - apt-get update
     # bzip2 is necessary for conda installers to get executed
     # curl is necessary to download them
-    - apt-get install -y bzip2 curl locales python-pip docker-ce
+    - apt-get install -y bzip2 curl locales python-pip
     - pip install shyaml setuptools
     - .azure-pipelines/run_docker_build.sh
 
