@@ -1,0 +1,38 @@
+language: none
+
+runtime:
+    nodePool: shippable_shared_aarch64
+    # nodePool: shippable_shared_aarch32
+
+env:
+  global:
+    # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
+  matrix:
+    - CONFIG=linux_
+      UPLOAD=False
+
+build:
+  pre_ci_boot:
+    image_name: arm64v8/ubuntu
+    image_tag: 18.04
+    pull: True
+
+  ci:
+    # Need to install bzip2 for conda
+    - apt-get update
+    # bzip2 is necessary for conda installers to get executed
+    # curl is necessary to download them
+    - apt-get install -y bzip2 curl locales 
+    - pip install shyaml setuptools
+    - .azure-pipelines/run_docker_build.sh
+
+# disable email notification
+# of CI job result
+integrations:
+  notifications:
+    - integrationName: email
+      type: email
+      on_success: never
+      on_failure: never
+      on_cancel: never
+      on_pull_request: never
