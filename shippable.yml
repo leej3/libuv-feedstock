@@ -13,17 +13,17 @@ env:
 
 build:
   pre_ci_boot:
-    image_name: arm64v8/ubuntu
-    image_tag: 18.04
+    image_name: condaforge/linux-anvil-comp7
+    # image_tag: 18.04
     pull: True
 
   ci:
     # Need to install bzip2 for conda
-    - apt-get update
+    # - apt-get update
     # bzip2 is necessary for conda installers to get executed
     # curl is necessary to download them
-    - apt-get install -y bzip2 curl locales python-pip
-    - pip install shyaml setuptools
+    # - apt-get install -y bzip2 curl locales python-pip
+    # - pip install shyaml setuptools
     - .azure-pipelines/build_steps.sh
 
 # disable email notification
