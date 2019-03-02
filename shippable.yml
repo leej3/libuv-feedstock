@@ -13,7 +13,7 @@ env:
 
 build:
   pre_ci_boot:
-    image_name: condaforge/linux-anvil-comp7
+    image_name: condaforge/linux-anvil-aarch64
     # image_tag: 18.04
     pull: True
 
