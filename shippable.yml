@@ -36,7 +36,8 @@ build:
     - source /root/archiconda3/bin/activate root
     - conda --version
     - conda config --show
-    - conda config --remove channels archiarm
+    # My archiarm adds itself to the default channels, lets just see if this works
+    # - conda config --remove channels archiarm
     - .azure-pipelines/build_steps.sh
 
 # disable email notification
