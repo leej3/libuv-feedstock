@@ -19,7 +19,8 @@ build:
 
     # image_name: arm64v8/ubuntu
     # image_tag: 18.04
-    image_name: condaforge/linux-anvil-aarch64
+    # Same as conda-forge image, but with git and sudo installed
+    image_name: archiconda/linux-anvil-aarch64
     image_tag: 'latest'
     pull: True
 
