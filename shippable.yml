@@ -13,48 +13,18 @@ env:
 
 build:
   pre_ci_boot:
-    # It really doesn't like the centos image.....
-    # image_name: arm64v8/centos
-    # image_tag: '7'
-
-    # image_name: arm64v8/ubuntu
-    # image_tag: 18.04
-    # Same as conda-forge image, but with git and sudo installed
-    image_name: archiconda/linux-anvil-aarch64
-    # image_tag: 'latest'
-    image_tag: 'builder'
+    image_name: arm64v8/ubuntu
+    image_tag: 18.04
     pull: True
 
   ci:
     # Need to install bzip2 for conda
-    # - apt-get update
+    - apt-get update
     # bzip2 is necessary for conda installers to get executed
     # curl is necessary to download them
-    # - apt-get install -y bzip2 curl locales
-    
-    # - dpkg-reconfigure --frontend=noninteractive locales
-
-    # - curl -L -O https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh
-    # - bash Archiconda3*.sh -b -p /root/archiconda3
-    # - export PATH="/root/archiconda3/bin:${PATH}"
-    # - source /root/archiconda3/bin/activate root
-    - conda --version
-    - conda config --show
-    # My archiarm adds itself to the default channels, lets just see if this works
-    # - conda config --remove channels archiarm
-    - conda install --yes --quiet conda-forge-ci-setup=2 conda-build -c conda-forge
-    - pwd
-    - ls -lah
-    - export FEEDSTOCK_ROOT=.
-    - export RECIPE_ROOT="${FEEDSTOCK_ROOT}/recipe"
-    - export CI_SUPPORT="${FEEDSTOCK_ROOT}/.ci_support"
-    - export CONFIG_FILE="${CI_SUPPORT}/${CONFIG}.yaml"
-    - conda install --yes --quiet conda-forge-ci-setup=2 conda-build -c conda-forge
-    - setup_conda_rc "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
-    - run_conda_forge_build_setup
-    - make_build_number "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
-    - conda build "${RECIPE_ROOT}" -m "${CI_SUPPORT}/${CONFIG}.yaml" --clobber-file "${CI_SUPPORT}/clobber_${CONFIG}.yaml"
-
+    - apt-get install -y bzip2 curl locales python-pip
+    - pip install shyaml setuptools
+    - .azure-pipelines/run_docker_build.sh
 
 # disable email notification
 # of CI job result
