@@ -17,23 +17,25 @@ build:
     # image_name: arm64v8/centos
     # image_tag: '7'
 
-    image_name: arm64v8/ubuntu
-    image_tag: 18.04
+    # image_name: arm64v8/ubuntu
+    # image_tag: 18.04
+    image_name: condaforge/linux-anvil-aarch64
+    image_tag: 'latest'
     pull: True
 
   ci:
     # Need to install bzip2 for conda
-    - apt-get update
+    # - apt-get update
     # bzip2 is necessary for conda installers to get executed
     # curl is necessary to download them
-    - apt-get install -y bzip2 curl locales
+    # - apt-get install -y bzip2 curl locales
     
-    - dpkg-reconfigure --frontend=noninteractive locales
+    # - dpkg-reconfigure --frontend=noninteractive locales
 
-    - curl -L -O https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh
-    - bash Archiconda3*.sh -b -p /root/archiconda3
-    - export PATH="/root/archiconda3/bin:${PATH}"
-    - source /root/archiconda3/bin/activate root
+    # - curl -L -O https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh
+    # - bash Archiconda3*.sh -b -p /root/archiconda3
+    # - export PATH="/root/archiconda3/bin:${PATH}"
+    # - source /root/archiconda3/bin/activate root
     - conda --version
     - conda config --show
     # My archiarm adds itself to the default channels, lets just see if this works
