@@ -42,7 +42,7 @@ build:
     - pwd
     - ls -lah
     - export FEEDSTOCK_ROOT=.
-    - export RECIPE_ROOT=../recipe_root
+    - export RECIPE_ROOT="${FEEDSTOCK_ROOT}/recipe"
     - export CI_SUPPORT="${FEEDSTOCK_ROOT}/.ci_support"
     - export CONFIG_FILE="${CI_SUPPORT}/${CONFIG}.yaml"
     - conda install --yes --quiet conda-forge-ci-setup=2 conda-build -c conda-forge
