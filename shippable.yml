@@ -28,7 +28,7 @@ build:
     # curl is necessary to download them
     - apt-get install -y bzip2 curl locales
     
-    -  dpkg-reconfigure --frontend=noninteractive locales
+    - dpkg-reconfigure --frontend=noninteractive locales
 
     - curl -L -O https://github.com/Archiconda/build-tools/releases/download/0.2.2/Archiconda3-0.2.2-Linux-aarch64.sh
     - bash Archiconda3*.sh -b -p /root/archiconda3
@@ -45,8 +45,6 @@ build:
     - export RECIPE_ROOT=../recipe_root
     - export CI_SUPPORT="${FEEDSTOCK_ROOT}/.ci_support"
     - export CONFIG_FILE="${CI_SUPPORT}/${CONFIG}.yaml"
-    - echo "conda-build:" > ~/.condarc
-    - echo " root-dir: /home/conda/feedstock_root/build_artifacts" >> ~/.condarc
     - conda install --yes --quiet conda-forge-ci-setup=2 conda-build -c conda-forge
     - setup_conda_rc "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
     - run_conda_forge_build_setup
