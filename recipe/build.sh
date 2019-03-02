@@ -1,6 +1,9 @@
-# We are going to disable some tests on qemu based platforms
+#!/bin/bash
 
-if [ ${target_platform} == linux-aarch64 ]; then
+set -x
+
+# We are going to disable some tests on qemu based platforms
+if [ "${target_platform}" == "linux-aarch64" ] || [ "${target_platform}" == "linux-ppc64le" ]; then
    sed -i '/get_currentexe/d' ./test/test-list.h
    sed -i '/udp_multicast_interface/d' ./test/test-list.h
    sed -i '/udp_no_autobind/d' ./test/test-list.h
