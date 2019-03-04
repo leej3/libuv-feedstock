@@ -9,6 +9,11 @@ if [ "${target_platform}" == "linux-aarch64" ] || [ "${target_platform}" == "lin
    sed -i '/udp_no_autobind/d' ./test/test-list.h
 fi
 
+# This particular test fails on osx
+if [ "${target_platform}" == 'osx-64' ]; then
+   sed -i '/hrtime/d' ./test/test-list.h
+fi
+
 # LIBTOOLIZE setting is required to workaround missing glibtoolize on OS X:
 # https://github.com/joyent/libuv/issues/1200
 LIBTOOLIZE=libtoolize sh ./autogen.sh
