@@ -19,6 +19,7 @@ requirements:
     - autoconf             # [unix]
     - libtool              # [unix]
     - make                 # [unix]
+    - sed                  # [unix]
 
 test:
   commands:
