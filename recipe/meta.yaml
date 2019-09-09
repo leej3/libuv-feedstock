@@ -7,8 +7,6 @@ package:
 source:
   url: https://github.com/libuv/libuv/archive/v{{ version }}.tar.gz
   sha256: c9818f38eee79d4e56f3ae55320d207ab183c5d4aff0fb148b5d6f5702f371cd
-  patches:
-    - "2422.patch"
 
 build:
   number: 0
