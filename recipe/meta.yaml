@@ -8,6 +8,7 @@ source:
   url: https://github.com/libuv/libuv/archive/v{{ version }}.tar.gz
   sha256: 70fe1c9ba4f2c509e8166c0ca2351000237da573bb6c82092339207a9715ba6b
   patches:
+    - 0001-Use-Unix-install-logic-for-MSVC.patch
     - test-udp-join-1.31.patch  # [osx]
 
 build:
@@ -21,6 +22,7 @@ requirements:
     - libtool              # [unix]
     - make                 # [unix]
     - sed                  # [osx]
+    - cmake                # [win]
 
 test:
   commands:
@@ -29,10 +31,14 @@ test:
     - test -f "$PREFIX/lib/libuv.so.1"  # [linux]
     - test -f "$PREFIX/lib/libuv.1.dylib"  # [osx]
     - test -f "$PREFIX/lib/libuv${SHLIB_EXT}"  # [not win]
+    - test -f "$PREFIX/lib/pkgconfig/libuv-static.pc"  # [not win]
+    - test -f "$PREFIX/lib/pkgconfig/libuv.pc"  # [not win]
     - if not exist %LIBRARY_INC%\uv.h (exit 1)      # [win]
     - if not exist %LIBRARY_LIB%\uv.lib (exit 1)    # [win]
     - if not exist %LIBRARY_LIB%\uv.dll (exit 1)    # [win]
     - if not exist %LIBRARY_LIB%\uv_a.lib (exit 1)  # [win]
+    - if not exist %LIBRARY_LIB%\pkgconfig/libuv-static.pc (exit 1)  # [win]
+    - if not exist %LIBRARY_LIB%\pkgconfig/libuv.pc (exit 1)         # [win]
 
 about:
   home: http://libuv.org/
