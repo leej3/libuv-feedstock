@@ -12,7 +12,6 @@ source:
 
 build:
   number: 0
-  skip: true  # [win]
 
 requirements:
   build:
@@ -25,11 +24,12 @@ requirements:
 
 test:
   commands:
-    - test -f "$PREFIX/include/uv.h"
+    - test -f "$PREFIX/include/uv.h"    # [unix]
     - test -f "$PREFIX/lib/libuv.a"     # [unix]
     - test -f "$PREFIX/lib/libuv.so.1"  # [linux]
     - test -f "$PREFIX/lib/libuv.1.dylib"  # [osx]
     - test -f "$PREFIX/lib/libuv${SHLIB_EXT}"  # [not win]
+    - if not exist %LIBRARY_PREFIX%\include\uv.h (exit 1)  # [win]
 
 about:
   home: http://libuv.org/
