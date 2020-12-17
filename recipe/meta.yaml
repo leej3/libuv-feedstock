@@ -35,7 +35,7 @@ test:
     - test -f "$PREFIX/lib/pkgconfig/libuv.pc"  # [not win]
     - if not exist %LIBRARY_INC%\uv.h (exit 1)      # [win]
     - if not exist %LIBRARY_LIB%\uv.lib (exit 1)    # [win]
-    - if not exist %LIBRARY_LIB%\uv.dll (exit 1)    # [win]
+    - if not exist %LIBRARY_BIN%\uv.dll (exit 1)    # [win]
     - if not exist %LIBRARY_LIB%\uv_a.lib (exit 1)  # [win]
     - if not exist %LIBRARY_LIB%\pkgconfig/libuv-static.pc (exit 1)  # [win]
     - if not exist %LIBRARY_LIB%\pkgconfig/libuv.pc (exit 1)         # [win]
