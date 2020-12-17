@@ -31,7 +31,6 @@ test:
     - test -f "$PREFIX/lib/libuv.so.1"  # [linux]
     - test -f "$PREFIX/lib/libuv.1.dylib"  # [osx]
     - test -f "$PREFIX/lib/libuv${SHLIB_EXT}"  # [not win]
-    - test -f "$PREFIX/lib/pkgconfig/libuv-static.pc"  # [not win]
     - test -f "$PREFIX/lib/pkgconfig/libuv.pc"  # [not win]
     - if not exist %LIBRARY_INC%\uv.h (exit 1)      # [win]
     - if not exist %LIBRARY_LIB%\uv.lib (exit 1)    # [win]
